@@ -77,13 +77,14 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     # - Imprimir intentos restantes
     # - Imprimir la palabra con espacios entre caracteres
     # - Imprimir las letras usadas
-    print("Intentos restantes:", )
+    print("Intentos restantes:", intentos)
 
     print("Palabra:", palabra_oculta)
-    pass
+    
+    print("Letras usadas:", letras_usadas)
 
 
-def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
+def actualizar_palabra_oculta(palabra, palabra_oculta, letra_introducida):
     """
     Actualiza la palabra oculta revelando las apariciones de la letra
     
@@ -100,8 +101,26 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra):
     # - Usar enumerate() para obtener índice y carácter
     # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
     # - Puedes convertir palabra_oculta a lista, modificar y volver a string
-    pass
+    for indice, letra_palabra in enumerate(palabra):
+        if letra_introducida == letra_palabra:
+            palabra_oculta = list(palabra_oculta)
+            palabra_oculta[indice] = letra_introducida
+            palabra_oculta = str(palabra_oculta)
 
+    return palabra_oculta
+
+def mostrar_mensaje_acierto(letra_introducida:str):
+    print("¡Bien! La letra", letra_introducida, "está en la palabra.")
+
+def mostrar_mensaje_error():
+    print("¡Letra incorrecta!")
+
+def mostrar_mensaje_final_felicitacion():
+    print("¡FELICIDADES! Has adivinado la palabra: PYTHON")
+    
+def mostrar_mensaje_final_derrota(palabra):
+    print("¡GAME OVER! Te has quedado sin intentos.")
+    print("La palabra era:", palabra)
 
 def jugar():
     """
@@ -116,17 +135,21 @@ def jugar():
     palabra = solicitar_palabra()
     
     # TODO: Limpiar la pantalla para que el jugador 2 no vea la palabra
-    # limpiar_pantalla()
+    limpiar_pantalla()
     
-    palabra_oculta, intentos, letras_usadas, juego_terminado = mostrar_estado(palabra_oculta, intentos, letras_usadas)
     # TODO: Inicializar variables del juego
     # - palabra_oculta: string con guiones bajos (ej: "_ _ _ _ _")
     # - intentos: número de intentos restantes
     # - letras_usadas: lista vacía
     # - juego_terminado: False
+    palabra_oculta = "_ "*len(palabra)
+    intentos = 5
+    letras_usadas = []
+    juego_terminado = False
     
     print("Jugador 2: ¡Adivina la palabra!\n")
     
+    '''
     # TODO: Bucle principal del juego
     # - Mientras haya intentos y el juego no haya terminado:
     #   1. Mostrar el estado actual
@@ -139,12 +162,40 @@ def jugar():
     #   5. Si la letra NO está en la palabra:
     #      - Restar un intento
     #      - Mostrar mensaje de fallo
+    '''
+    # - Mientras haya intentos y el juego no haya terminado:
+    #   1. Mostrar el estado actual
+    while intentos > 0 and juego_terminado == False:
+        mostrar_estado(palabra_oculta, intentos, letras_usadas)
+        
+        #   2. Solicitar una letra
+        letra_introducida = solicitar_letra(letras_usadas)
+
+        #   3. Añadir la letra a letras_usadas
+        letras_usadas.append(letra_introducida)
+    
+        #   4. Si la letra está en la palabra:
+        if letra_introducida in palabra:
+            palabra_oculta = actualizar_palabra_oculta(palabra, palabra_oculta, letra_introducida)
+            #- Mostrar mensaje de acierto
+            mostrar_mensaje_acierto(letra_introducida)
+        if "_" not in palabra_oculta:
+            juego_terminado = True
+        #   5. Si la letra NO está en la palabra:
+        if letra_introducida not in palabra:
+            #- Mostrar mensaje de fallo
+            mostrar_mensaje_error()
+            #- Restar un intento
+            intentos += -1
     
     # TODO: Mostrar mensaje final
     # - Si ganó: mostrar felicitación y la palabra
     # - Si perdió: mostrar mensaje de derrota y la palabra correcta
-    pass
-
+    
+    if juego_terminado == True:
+        mostrar_mensaje_final_felicitacion()
+    elif juego_terminado == False:
+        mostrar_mensaje_final_derrota(palabra)
 
 def main():
     """

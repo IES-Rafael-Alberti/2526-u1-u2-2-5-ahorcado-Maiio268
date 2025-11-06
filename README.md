@@ -150,3 +150,14 @@ Profesor: revilofe
 
 ## Licencia
 Material educativo para uso académico
+
+# Depuración realizada
+**He depurado línea a línea el programa en las partes que he ido necesitando ya que así puedo ver cómo se van guardando las variables y cómo van funcionando las funciones PASO A PASO**
+He puesto un punto de ruptura en la línea 163 para ver cómo se guardan las variables, se puede ver que la palabra introducida se guarda correctamente en la variable 'palabra' en mayúsculas, tal y como he especificado en la función, así sé que mi función funciona correctamente:
+![alt text](image-1.png)
+
+Vamos a ver otro ejemplo, aquí he mirado cómo se guarda la variable 'palabra_oculta' y gracias a depurar me he dado cuenta de que tengo que añadir un espacio vacío entre cada "_", ya que sino no se ve la longitud de la palabra con claridad.
+![alt text](image-2.png)
+
+Ahora lo he arreglado y se guarda correctamente la variable:
+![alt text](image-3.png)
