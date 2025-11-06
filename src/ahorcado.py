@@ -8,8 +8,8 @@ Práctica de programación que evalúa:
 - Sentencias iterativas
 - Manipulación de strings
 
-Autor: [Nombre del alumno]
-Fecha: [Fecha]
+Autor: Mario Montes Bermúdez
+Fecha: 06/11/2025
 """
 
 
@@ -34,7 +34,11 @@ def solicitar_palabra():
     # - Verificar que tenga al menos 5 caracteres (len())
     # - Verificar que solo contenga letras (isalpha())
     # - Convertir a mayúsculas (upper())
-    pass
+    
+    palabra = ""
+    while len(palabra) < 5 or palabra == "" or not palabra.isalpha():
+        palabra = input("Introduce la palabra a adivinar (mínimo 5 letras): ")
+    return palabra.upper()
 
 
 def solicitar_letra(letras_usadas):
@@ -54,9 +58,12 @@ def solicitar_letra(letras_usadas):
     # - Verificar que sea una letra (isalpha())
     # - Verificar que no esté en letras_usadas (operador 'in')
     # - Convertir a mayúsculas (upper())
-    pass
-
-
+    
+    letra_introducida = ""
+    while letra_introducida == "" or len(letra_introducida) != 1 or not letra_introducida.isalpha():
+        letra_introducida = input("Introduce una letra: ")
+    return letra_introducida
+    
 def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     """
     Muestra el estado actual del juego
@@ -70,6 +77,9 @@ def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     # - Imprimir intentos restantes
     # - Imprimir la palabra con espacios entre caracteres
     # - Imprimir las letras usadas
+    print("Intentos restantes:", )
+
+    print("Palabra:", palabra_oculta)
     pass
 
 
@@ -103,11 +113,12 @@ def jugar():
     INTENTOS_MAXIMOS = 5
     
     # TODO: Solicitar la palabra al jugador 1
-    # palabra = solicitar_palabra()
+    palabra = solicitar_palabra()
     
     # TODO: Limpiar la pantalla para que el jugador 2 no vea la palabra
     # limpiar_pantalla()
     
+    palabra_oculta, intentos, letras_usadas, juego_terminado = mostrar_estado(palabra_oculta, intentos, letras_usadas)
     # TODO: Inicializar variables del juego
     # - palabra_oculta: string con guiones bajos (ej: "_ _ _ _ _")
     # - intentos: número de intentos restantes
