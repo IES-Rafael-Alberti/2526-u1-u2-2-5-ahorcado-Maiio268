@@ -60,9 +60,9 @@ def solicitar_letra(letras_usadas):
     # - Convertir a mayúsculas (upper())
     
     letra_introducida = ""
-    while letra_introducida == "" or len(letra_introducida) != 1 or not letra_introducida.isalpha():
+    while letra_introducida == "" or len(letra_introducida) != 1 or not letra_introducida.isalpha() or letra_introducida in letras_usadas:
         letra_introducida = input("Introduce una letra: ")
-    return letra_introducida
+    return letra_introducida.upper()
     
 def mostrar_estado(palabra_oculta, intentos, letras_usadas):
     """
@@ -109,12 +109,14 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra_introducida):
 
     return palabra_oculta
 
+# Funciones que printean los mensajes de acierto y error
 def mostrar_mensaje_acierto(letra_introducida:str):
     print("¡Bien! La letra", letra_introducida, "está en la palabra.")
 
 def mostrar_mensaje_error():
     print("¡Letra incorrecta!")
 
+# Funciones que printean los mensajes segun el jugador gana o pierde la partida
 def mostrar_mensaje_final_felicitacion():
     print("¡FELICIDADES! Has adivinado la palabra: PYTHON")
     
@@ -172,7 +174,10 @@ def jugar():
         letra_introducida = solicitar_letra(letras_usadas)
 
         #   3. Añadir la letra a letras_usadas
-        letras_usadas.append(letra_introducida)
+        # Añado la letra introducida a la lista de letras usadas SI NO está ya dentro de la lista, 
+        # si estaba ya en la lista no la añade de nuevo
+        if letra_introducida not in letras_usadas:
+            letras_usadas.append(letra_introducida)
     
         #   4. Si la letra está en la palabra:
         if letra_introducida in palabra:
