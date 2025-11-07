@@ -101,13 +101,12 @@ def actualizar_palabra_oculta(palabra, palabra_oculta, letra_introducida):
     # - Usar enumerate() para obtener índice y carácter
     # - Si el carácter coincide con la letra, reemplazar en palabra_oculta
     # - Puedes convertir palabra_oculta a lista, modificar y volver a string
-    for indice, letra_palabra in enumerate(palabra):
-        if letra_introducida == letra_palabra:
-            palabra_oculta = list(palabra_oculta)
-            palabra_oculta[indice] = letra_introducida
-            palabra_oculta = str(palabra_oculta)
-
-    return palabra_oculta
+    # Convierte en lista dividiendo por espacios
+    lista_oculta = palabra_oculta.split(" ")
+    for i, letra in enumerate(palabra):
+        if letra == letra_introducida:
+            lista_oculta[i] = letra_introducida
+    return " ".join(lista_oculta)
 
 # Funciones que printean los mensajes de acierto y error
 def mostrar_mensaje_acierto(letra_introducida:str):
