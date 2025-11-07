@@ -123,6 +123,27 @@ def mostrar_mensaje_final_derrota(palabra):
     print("¡GAME OVER! Te has quedado sin intentos.")
     print("La palabra era:", palabra)
 
+# Funcion para dibujar el muñeco
+def dibujar_muñeco(intentos:int):
+    '''
+     o
+    /|\\
+    / \\
+    '''
+    
+    if intentos == 5:
+        print(" O")
+    elif intentos == 4:
+        print(" O\n |")
+    elif intentos == 3:
+        print(" O\n/|")
+    elif intentos == 2:
+        print(" O\n/|\\")
+    elif intentos == 1:
+        print(" O\n/|\\\n/")
+    elif intentos == 0:
+        print(" O\n/|\\\n/ \\")
+
 def jugar():
     """
     Función principal que ejecuta el juego del ahorcado
@@ -164,9 +185,12 @@ def jugar():
     #      - Restar un intento
     #      - Mostrar mensaje de fallo
     '''
+    
     # - Mientras haya intentos y el juego no haya terminado:
     #   1. Mostrar el estado actual
     while intentos > 0 and juego_terminado == False:
+        dibujar_muñeco(intentos)
+        
         mostrar_estado(palabra_oculta, intentos, letras_usadas)
         
         #   2. Solicitar una letra
@@ -187,10 +211,12 @@ def jugar():
             juego_terminado = True
         #   5. Si la letra NO está en la palabra:
         if letra_introducida not in palabra:
-            #- Mostrar mensaje de fallo
-            mostrar_mensaje_error()
             #- Restar un intento
             intentos += -1
+            # Printeo el muñeco para que aparezca al final tambien
+            dibujar_muñeco(intentos)
+            #- Mostrar mensaje de fallo
+            mostrar_mensaje_error()
     
     # TODO: Mostrar mensaje final
     # - Si ganó: mostrar felicitación y la palabra
