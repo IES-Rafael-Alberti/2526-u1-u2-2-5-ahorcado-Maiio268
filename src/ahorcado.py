@@ -165,7 +165,7 @@ def jugar():
     # - letras_usadas: lista vacía
     # - juego_terminado: False
     palabra_oculta = "_ "*len(palabra)
-    intentos = 5
+    intentos = INTENTOS_MAXIMOS
     letras_usadas = []
     juego_terminado = False
     
