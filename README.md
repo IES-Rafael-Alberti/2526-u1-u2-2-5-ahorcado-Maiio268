@@ -1,3 +1,5 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/8lAzcOMh)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21506971&assignment_repo_type=AssignmentRepo)
 # Práctica: El Juego del Ahorcado
 
 ## Descripción
@@ -148,3 +150,21 @@ Profesor: revilofe
 
 ## Licencia
 Material educativo para uso académico
+
+# Depuración realizada
+**He depurado línea a línea el programa en las partes que he ido necesitando ya que así puedo ver cómo se van guardando las variables y cómo van funcionando las funciones PASO A PASO**
+He puesto un punto de ruptura en la línea 163 para ver cómo se guardan las variables, se puede ver que la palabra introducida se guarda correctamente en la variable 'palabra' en mayúsculas, tal y como he especificado en la función, así sé que mi función funciona correctamente:
+![Captura Depuración](/capturas/depuracion1.png)
+
+Vamos a ver otro ejemplo, aquí he mirado cómo se guarda la variable 'palabra_oculta' y gracias a depurar me he dado cuenta de que tengo que añadir un espacio vacío entre cada "_", ya que sino no se ve la longitud de la palabra con claridad.
+![Captura Depuración](/capturas/depuracion2.png)
+
+Ahora lo he arreglado y se guarda correctamente la variable:
+![Captura Depuración](/capturas/depuracion3.png)
+
+# Documentación
+Respecto a la documentación, todas las funciones están documentadas de la siguiente forma: 
+- Descripción: en cada una se explica lo que hace y cómo funciona
+- Args: se especifican los argumentos que recibe la función, el tipo de dato y una breve descripción de cada argumento.
+- Returns: se especifica el tipo de dato que retorna la función y una breve descripción de lo que es.
+Además de esto, he documentado ciertas líneas a lo largo del código.
